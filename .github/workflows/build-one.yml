@@ -35,6 +35,8 @@ jobs:
           path: output/dl
           key: dl-${{env.CACHE_DATE}}
           restore-keys: dl-
+          - name: Add WiFi driver
+          run: echo "BR2_PACKAGE_RTL8733BU_OPENIPC=y" >> br-ext-chip-goke/configs/gk7205v300_ultimate_defconfig
 
       - name: Build firmware
         run: |
