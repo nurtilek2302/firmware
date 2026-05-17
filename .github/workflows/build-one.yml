@@ -49,7 +49,7 @@ jobs:
           backoffs="30 60 120 300"
           attempt=1
           for sleep_for in $backoffs ""; do
-            make BOARD=${{inputs.platform}} BR2_PACKAGE_RTL8733BU_OPENIPC=y && break
+            echo "BR2_PACKAGE_RTL8733BU_OPENIPC=y" >> br-ext-chip-goke/configs/gk7205v300_ultimate_defconfig && make BOARD=${{inputs.platform}} && break
             if [ -z "$sleep_for" ]; then
               echo "::error::build failed after ${attempt} attempts"
               exit 1
